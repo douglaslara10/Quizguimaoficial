@@ -137,6 +137,7 @@ function optionSelected(answer) {
   let userAns = answer.querySelector(".choice-text").textContent; // Obtém a opção selecionada pelo usuário
   let correctAns = questions[questionCount].answer; // Obtém a resposta correta do array
   const allOptions = optionList.children.length; // Obtém todos os itens de opção
+  setTimeout(() => showNextQuestion(), 1000);
   if (userAns == correctAns) {
     // Se a opção selecionada pelo usuário for igual à resposta correta do array
     userScore += 1; // Atualiza o valor da pontuação com 1
@@ -244,12 +245,14 @@ function startTimer(time) {
       timeText.textContent = "Intervalo"; // Altera o texto de tempo para Intervalo
       const allOptions = optionList.children.length; // Obtém todos os itens de opção
       let correctAns = questions[questionCount].answer; // Obtém a resposta correta do array
+      setTimeout(() => showNextQuestion(), 1000);
       for (i = 0; i < allOptions; i++) {
         if (optionList.children[i].textContent == correctAns) {
           // Se houver uma opção que corresponda à resposta do array
           optionList.children[i].setAttribute("class", "option correct"); // Adiciona a cor verde à opção correspondente
           optionList.children[i].insertAdjacentHTML("beforeend", tickIconTag); // Adiciona o ícone de marca à opção correspondente
           console.log("Tempo esgotado: Resposta correta selecionada automaticamente.");
+          
         }
       }
       for (i = 0; i < allOptions; i++) {
